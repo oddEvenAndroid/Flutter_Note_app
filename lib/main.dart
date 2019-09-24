@@ -43,12 +43,18 @@ class _MyNotesState extends State<MyNotes> {
     super.initState();
   }
 
-  /**
-   * 
-   * API Call and get  data
-   * 
-   */
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(home: Home());
+  }
+}
 
+class Home extends StatefulWidget {
+  @override
+  _HomeState createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
   Future<List<Notes>> getData() async {
     List<Notes> list;
     String link;
@@ -67,12 +73,6 @@ class _MyNotesState extends State<MyNotes> {
     print("List Size: ${list.length}");
     return list;
   }
-
-  /**
-   * 
-   * Create Custom Widget For List
-   * 
-   */
 
   Widget listViewWidget(List<Notes> article) {
     return Container(
@@ -128,7 +128,8 @@ class _MyNotesState extends State<MyNotes> {
             onPressed: () {
               Navigator.pushReplacement(
                 context,
-                MaterialPageRoute(builder: (context) => AddNote()),
+                new MaterialPageRoute(
+                    builder: (BuildContext context) => AddNote()),
               );
             },
           )
